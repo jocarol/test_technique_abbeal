@@ -11,28 +11,22 @@ const dest = '/assets/static/datas.csv';
 
 const parseToDb = async () => {
     const Row = db.rows;
-    console.log("Row : controllers/rows.js = ", Row);
     const pathToCsv = __basedir + dest;
     const rows = [];
 
-    console.log("parseToDb");
-    console.log(pathToCsv);
     fs.createReadStream(pathToCsv)
         .pipe(csv.parse({ headers: true }))
         .on("error", (error) => {
             throw error.message;
         })
         .on("data", (row) => {
-            console.log("yay");
             if (row.email.length <= 32) {
                 rows.push(row);
             }
         })
         .on("end", () => {
             Row.bulkCreate(rows, { ignoreDuplicates: true });
-            console.log("mes couilles");
         })
-    console.log("lol");
 };
 
 
@@ -71,7 +65,7 @@ const importReport = {
 const importUsers = async (req, res) => {
     try {
         let startTimer = performance.now();
-        await downloadFile(distRessource, __basedir + dest);
+        //await downloadFile(distRessource, __basedir + dest);
         await parseToDb();
         let stopTimer = performance.now();
         importReport.time = (stopTimer - startTimer).toFixed(3) + "ms";
@@ -86,16 +80,6 @@ const importUsers = async (req, res) => {
     }
 };
 
-const formatUserOuptut = (rawUser) => {
-    return user = {
-        id: rawUser.id,
-        name: rawUser.login + " " + rawUser.name,
-        email: rawUser.email,
-        registeredAt: moment(rawUser.registeredAt).format("MMMM Do Y, h:mm:ss a"),
-        gender: rawUser.gender,
-    };
-};
-
 const getUserById = async (req, res) => {
     try {
         const Row = db.rows;
@@ -106,6 +90,16 @@ const getUserById = async (req, res) => {
         res.status(500).send("" + error);
     }
 }
+
+const formatUserOuptut = (rawUser) => {
+    return user = {
+        id: rawUser.id,
+        name: rawUser.login + " " + rawUser.name,
+        email: rawUser.email,
+        registeredAt: moment(rawUser.registeredAt).format("MMMM Do Y, h:mm:ss a"),
+        gender: rawUser.gender,
+    };
+};
 
 module.exports = {
     importUsers,

@@ -1,11 +1,14 @@
 const { importUsers, getUserById } = require('../controllers/rows.js');
+const {
+    userValidationRules,
+    importValidationRules,
+    validate
+} = require('../middlewares/validation');
 const express = require('express');
 
 const router = express.Router();
 
-/*router.get('/import', validateImport(importUsers), importUsers);
-router.get('/user/?:id', validateImport(getUserById), getUserById);*/
-router.get('/import', importUsers);
-router.get('/user/:id?', getUserById);
+router.get('/import', importValidationRules(), validate, importUsers);
+router.get('/user/:id?', userValidationRules(), validate, getUserById);
 
 module.exports = router;
