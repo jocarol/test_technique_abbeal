@@ -1,0 +1,3 @@
+Greetings, I wasn't able to import the DB schema as explained is the readme. I managed to do so with this command instead :
+
+'sudo docker exec -i "mysql container id" mysql -uroot -proot < dump.sql'

@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  db:
+    image: mariadb:10.2
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: root
+    ports:
+      - 3051:3306
+    restart: on-failure
+
+  app:
+    image: node:14
+    command: npm start
+    depends_on:
+      - db
+    ports:
+      - 3050:3000
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app:cached
+    restart: on-failure

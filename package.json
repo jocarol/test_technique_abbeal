@@ -1,0 +1,31 @@
+{
+  "name": "test_technique",
+  "version": "1.0.0",
+  "description": "A basic test for backend",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adbergerat/TEST_TECHNIQUE.git"
+  },
+  "author": "adbergerat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adbergerat/TEST_TECHNIQUE/issues"
+  },
+  "homepage": "https://github.com/adbergerat/TEST_TECHNIQUE#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.2",
+    "fast-csv": "^4.3.6",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.7",
+    "read-excel-file": "^5.0.0",
+    "sequelize": "^6.5.0"
+  }
+}
