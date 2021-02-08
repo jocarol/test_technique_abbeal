@@ -1,4 +1,4 @@
-const { importUsers, getUserById } = require('../controllers/rows.js');
+const { importUsers, getUserById } = require('../controllers/users.controller.js');
 const {
     userValidationRules,
     importValidationRules,

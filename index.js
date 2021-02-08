@@ -9,7 +9,7 @@ global.__basedir = __dirname;
     *   It shares the same naming convention as __dirname and __filename.
  **/
 const express = require('express');
-const routes = require('./routes/rows.js');
+const routes = require('./routes/appRoutes.js');
 
 const PORT = 3000;
 const app = express();
