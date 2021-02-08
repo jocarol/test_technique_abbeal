@@ -14,12 +14,12 @@ const importReport = {
     time: null,
     importedRows: 0,
 };
-let count = 0
 
 const parseToDb = async () => {
     const Row = db.rows;
     const pathToCsv = __basedir + dest;
     const rows = [];
+    
 
     return new Promise((res, rej) => {
         fs.createReadStream(pathToCsv)
@@ -29,7 +29,6 @@ const parseToDb = async () => {
             })
             .on("data", (row) => {
                 if (row.email.length <= 32) {
-                    count++;
                     rows.push(row);
                 }
             })
