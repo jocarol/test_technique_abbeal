@@ -10,6 +10,4 @@ const formatUserOuptut = (rawUser) => {
     };
 }
 
-module.exports = {
-    formatUserOuptut,
-};
+module.exports = formatUserOuptut;

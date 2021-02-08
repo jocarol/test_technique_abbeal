@@ -26,9 +26,9 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.ENUM(['female', 'male', 'other']),
         },
     },
-    {
-        timestamps: false,
-    });
+        {
+            timestamps: false,
+        });
 
 
     return Row;
