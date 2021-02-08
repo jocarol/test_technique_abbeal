@@ -4,6 +4,9 @@ const { processImportRequest, importReport } = require('../utils/import');
 
 const distRessource = 'https://abbeal.s3.fr-par.scw.cloud/datas.csv';
 const dest = '/assets/static/datas.csv';
+const ERROR = {
+    USER_NOT_FOUND: 'User not found',
+};
 
 const importUsers = async (req, res) => {
     try {
@@ -23,7 +26,7 @@ const getUserById = async (req, res) => {
         const Row = db.rows;
         const rawUser = await Row.findByPk(req.params.id);
         if (!rawUser)
-            throw new Error('Can\'t find the requested user in the database');
+            throw new Error(ERROR.USER_NOT_FOUND);
         const user = formatUserOuptut(rawUser);
         res.status(200).send(user);
     } catch (error) {
